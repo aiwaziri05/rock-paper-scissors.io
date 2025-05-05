@@ -1,9 +1,5 @@
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
 let humanScore = 0;
 let computerScore = 0;
-
 function getComputerChoice() {
 	let computerChoice = Math.random();
 
@@ -18,7 +14,7 @@ function getComputerChoice() {
 	return computerChoice;
 }
 
-getComputerChoice();
+// getComputerChoice();
 
 function getHumanChoice() {
 	let humanChoice = prompt('Enter your move e.g rock, paper, scissors', '');
@@ -52,7 +48,27 @@ function playRound(humanChoice, computerChoice) {
 	}
 }
 
-playRound(humanSelection, computerSelection);
+function playGame() {
+	let rounds = 0;
 
-console.log(computerScore);
-console.log(humanScore);
+	for (let i = 0; i < 5; i++) {
+		const humanSelection = getHumanChoice();
+		const computerSelection = getComputerChoice();
+		playRound(humanSelection, computerSelection);
+
+		rounds++;
+	}
+
+	console.log(`Rounds Played: ${rounds}`);
+	console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+
+	if (humanScore > computerScore) {
+		console.log('Human is the winner.');
+	} else if (computerScore > humanScore) {
+		console.log('Computer is the winner.');
+	} else {
+		console.log("It's a Tie.");
+	}
+}
+
+playGame();
